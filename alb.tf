@@ -1,8 +1,8 @@
 resource "aws_lb_target_group" "web_tg" {
-  name     = "web-target-group"
-  port     = 80
-  protocol = "HTTP"
-  vpc_id   = module.vpc.vpc_id
+  name        = "web-target-group"
+  port        = 80
+  protocol    = "HTTP"
+  vpc_id      = module.vpc.vpc_id
   target_type = "instance"
   health_check {
     enabled             = true
@@ -26,7 +26,7 @@ resource "aws_lb_target_group_attachment" "webserver2" {
   target_group_arn = aws_lb_target_group.web_tg.arn
   target_id        = aws_instance.webserver2.id
   port             = 80
-} 
+}
 // lb
 resource "aws_lb" "web_alb" {
   name               = "web-alb"
